@@ -5,8 +5,8 @@
   "main": "./lib/index.js",
   "scripts": {
     "pack-base": "webpack ./lib/index.js --module-bind 'js=babel?presets[]=es2015' --output-path ./dist/ --output-library attachArgsToClass",
-    "pack": "npm run pack-base -- --output-filename attachArgsToClass.js",
-    "pack-min": "npm run pack-base -- --optimize-minimize --output-filename attachArgsToClass.min.js",
+    "pack": "webpack --output-filename attachArgsToClass.js",
+    "pack-min": "webpack --optimize-minimize --output-filename attachArgsToClass.min.js",
     "develop": "rm ./dist/* && npm run pack -- --watch"
   },
   "repository": {
