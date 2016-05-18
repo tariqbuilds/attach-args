@@ -1,7 +1,8 @@
 module.exports = {
-  "entry": "./lib/index.js",
-  "output": {
-    "path": "./dist/"
+  entry: "./lib/index.js",
+  output: {
+    library: 'attachArgsToClass',
+    path: './dist/'
   },
   module: {
     loaders: [
