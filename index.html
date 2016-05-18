@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <script src="o.js"></script>
+    <script>
+      'use strict'
+
+      class abc{
+        constructor(alpha, beta) {
+          attachArgsToClass(this, arguments, 'native-es6')
+        }
+      }
+
+      var b = new abc({ news: 'good' }, { bad: 'news' })
+
+      console.log(b)
+    </script>
+  </head>
+</html>
