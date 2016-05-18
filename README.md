@@ -12,7 +12,7 @@ Supports:
 
 ```js
 
-// before:
+// before
 class oldWay {
   constructor(a, b, c, d) {
     this.a = a;
