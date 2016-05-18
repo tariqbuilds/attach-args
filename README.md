@@ -26,13 +26,23 @@ Include script
 ```js
 class shiny {
   constructor(a, b, c, d) {
+
+    // this is where the magic happens
     attachArgsToClass(this, arguments);
+
     // shiny.a - d will be available on this instance of shiny
   }
 }
-
-// both will accomplish the same thing
 ```
+
+By default, it will automatically try to figure out what type of class you are using (native ES6, babel, etc.)
+
+To avoid this overhead, pass a 3rd parameter with one of the following options:
+
+* 'native-es6'
+* 'babel-6'
+
+Alternatively, you can configure this across your application via: **TBD**
 
 # Contribute
 
