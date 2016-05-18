@@ -1,0 +1,5 @@
+{
+  "ignore": [
+    "lib/class-type/native-es6.js"
+  ]
+}

@@ -46,9 +46,9 @@ var attachArgsToClass =
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	'use strict'
+	'use strict';
 
-	var getConstructorArgs = __webpack_require__(1)
+	var getConstructorArgs = __webpack_require__(1);
 
 	// attaches provided arguments array to class as named properties
 	module.exports = function attachArgsToClass(classToParse, classArgs, classType) {
@@ -56,98 +56,90 @@ var attachArgsToClass =
 	  // parse the arguments to the constructor
 	  // of the provided class
 	  // as an object
-	  var args = getConstructorArgs(classToParse, classType)
-
+	  var args = getConstructorArgs(classToParse, classType);
 
 	  // attach each argument to class instance
-	  args.forEach(function (arg, i){
-	    classToParse[arg] = classArgs[i]
-	  })
-
-	}
-
+	  args.forEach(function (arg, i) {
+	    classToParse[arg] = classArgs[i];
+	  });
+	};
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict'
+	'use strict';
 
-	var supportedClassTypes = __webpack_require__(2)
-	var validateUserProvidedClassType = __webpack_require__(3)
+	var supportedClassTypes = __webpack_require__(2);
+	var validateUserProvidedClassType = __webpack_require__(3);
 
 	module.exports = function getConstructorArgs(classRef, userProvidedClassType) {
 
 	  // var to store our final results
-	  var parsedClassArguments
+	  var parsedClassArguments;
 
 	  // if the user passed invalid userProvidedClassType, throw error
-	  validateUserProvidedClassType(userProvidedClassType)
+	  validateUserProvidedClassType(userProvidedClassType);
 
 	  // if the user specified classType, try parsing it
 	  if (userProvidedClassType) {
 	    try {
-	      parsedClassArguments = __webpack_require__(4)("./" + userProvidedClassType)(classRef)
+	      parsedClassArguments = __webpack_require__(4)("./" + userProvidedClassType)(classRef);
 	    } catch (parsingClassErr) {
 	      throw {
 	        err: 'Could not parse specified class type',
-	        hint: 'The classType you passed (' + userProvidedClassType + ') did not help. I was not able to parse the provided class',
-	      }
+	        hint: 'The classType you passed (' + userProvidedClassType + ') did not help. I was not able to parse the provided class'
+	      };
 	    }
 
-	  // otherwise, try to figure out what classType they are using
+	    // otherwise, try to figure out what classType they are using
 	  } else {
 
-	    supportedClassTypes.forEach(function (supportedClassType) {
-	      var wasAbleToParseArgs = __webpack_require__(4)("./" + supportedClassType)(classRef)
-	      if (wasAbleToParseArgs !== false)
-	        parsedClassArguments = wasAbleToParseArgs
-	    })
+	      supportedClassTypes.forEach(function (supportedClassType) {
+	        var wasAbleToParseArgs = __webpack_require__(4)("./" + supportedClassType)(classRef);
+	        if (wasAbleToParseArgs !== false) parsedClassArguments = wasAbleToParseArgs;
+	      });
 
-	    if (!parsedClassArguments) {
-	      throw {
-	        err: 'Could not parse specified class type',
-	        hint: 'The class you passed in could not be identified as one of the supported class types (' + supportedClassTypes.join(', ') + ')'
+	      if (!parsedClassArguments) {
+	        throw {
+	          err: 'Could not parse specified class type',
+	          hint: 'The class you passed in could not be identified as one of the supported class types (' + supportedClassTypes.join(', ') + ')'
+	        };
 	      }
 	    }
-	  }
 
 	  // thanks to: https://davidwalsh.name/javascript-arguments
-	  var result = parsedClassArguments.split(',').map(function(arg) {
-	    return arg.replace(/\/\*.*\*\//, '').trim()
-	  }).filter(function(arg) { return arg })
-
-	  return result
-	}
-
+	  return parsedClassArguments.split(',').map(function (arg) {
+	    return arg.replace(/\/\*.*\*\//, '').trim();
+	  }).filter(function (arg) {
+	    return arg;
+	  });
+	};
 
 /***/ },
 /* 2 */
 /***/ function(module, exports) {
 
-	module.exports = [
-	  'native-es6',
-	  'babel-6',
-	]
+	'use strict';
 
+	module.exports = ['native-es6', 'babel-6'];
 
 /***/ },
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict'
+	'use strict';
 
-	var supportedClassTypes = __webpack_require__(2)
+	var supportedClassTypes = __webpack_require__(2);
 
 	module.exports = function (userProvidedClassType) {
 	  if (userProvidedClassType && supportedClassTypes.indexOf(userProvidedClassType) === -1) {
 	    throw {
 	      err: 'Unsupported class type passed:' + userProvidedClassType,
-	      hint: 'Supported class types are: ' + supportedClassTypes.join(', '),
-	    }
+	      hint: 'Supported class types are: ' + supportedClassTypes.join(', ')
+	    };
 	  }
-	}
-
+	};
 
 /***/ },
 /* 4 */
@@ -177,17 +169,16 @@ var attachArgsToClass =
 /* 5 */
 /***/ function(module, exports) {
 
-	'use strict'
+	'use strict';
 
 	module.exports = function (classToParse) {
 	  try {
 	    // thanks to: https://davidwalsh.name/javascript-arguments
-	    return classToParse.constructor.toString().match(/function\s.*?\(([^)]*)\)/)[1]
-	  } catch(err) {
-	    return false
+	    return classToParse.constructor.toString().match(/function\s.*?\(([^)]*)\)/)[1];
+	  } catch (err) {
+	    return false;
 	  }
-	}
-
+	};
 
 /***/ },
 /* 6 */
@@ -196,9 +187,12 @@ var attachArgsToClass =
 	'use strict'
 
 	module.exports = function (classToParse) {
-
 	  try {
-	    class foo {}
+
+	    class foo {
+	      constructor() {
+	      }
+	    }
 
 	    // if so, parse native class
 	    var beginningOfConstructor = classToParse.constructor.toString().indexOf('constructor(')
