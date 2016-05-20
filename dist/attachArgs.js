@@ -48,20 +48,34 @@ var attachArgs =
 	
 	'use strict';
 
-	var getConstructorArgs = __webpack_require__(1);
+	var getConstructorArgsAsObject = __webpack_require__(1);
 
-	// attaches provided arguments array to class as named properties
-	module.exports = function attachArgs(classToParse, classArgs, classType) {
+	module.exports = function (constructorArgs) {
 
-	  // parse the arguments to the constructor
-	  // of the provided class
-	  // as an object
-	  var args = getConstructorArgs(classToParse, classType);
+	  var attachPropertiesToClassInstance = function attachPropertiesToClassInstance(classRef, argsCSV) {
+	    var argsArray = argsCSV.split(',').map(function (arg) {
+	      return arg.replace(/\/\*.*\*\//, '').trim();
+	    }).filter(function (arg) {
+	      return arg;
+	    });
+	    argsArray.forEach(function (arg, i) {
+	      return classRef[arg] = constructorArgs[i];
+	    });
+	  };
 
-	  // attach each argument to class instance
-	  args.forEach(function (arg, i) {
-	    classToParse[arg] = classArgs[i];
-	  });
+	  return {
+	    toClass: function toClass(classRef) {
+	      this.toNativeClass(classRef);
+	    },
+	    toNativeClass: function toNativeClass(classRef) {
+	      var args = __webpack_require__(6)(classRef);
+	      attachPropertiesToClassInstance(classRef, args);
+	    },
+	    toBabelClass: function toBabelClass(classRef) {
+	      var args = __webpack_require__(5)(classRef);
+	      attachPropertiesToClassInstance(classRef, args);
+	    }
+	  };
 	};
 
 /***/ },

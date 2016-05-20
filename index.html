@@ -1,16 +1,32 @@
 <html>
   <head>
-    <script src="dist/attachArgsToClass.min.js"></script>
+    <script src="dist/attachArgs.js"></script>
     <script>
       'use strict'
 
-      class abc{
+      var params = [
+        { news: 'good' },
+        { bad: 'news' }
+      ]
+
+      class nativeClass{
         constructor(alpha, beta) {
-          attachArgsToClass(this, arguments, 'native-es6')
+          attachArgs(arguments).toClass(this)
+          console.log('toClass', this)
         }
       }
 
-      var b = new abc({ news: 'good' }, { bad: 'news' })
+      var b = new nativeClass(params[0], params[1])
+
+      function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+      var abc = function abc(alpha, beta) {
+        _classCallCheck(this, abc);
+        attachArgs(arguments).toBabelClass(this)
+        console.log('toBabelClass', this)
+      };
+
+      var a = new abc(params[0], params[1])
 
       document.write(JSON.stringify(b))
     </script>
