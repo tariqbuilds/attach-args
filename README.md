@@ -5,7 +5,7 @@ Supports:
 
 * [x] Native ES6 class
 * [x] Babel
-* [ ] Node.js
+* [x] Node.js
 * [ ] Traceur
 
 # Installation
