@@ -1,11 +1,11 @@
 # arguments-to-class-properties
 Utility to attach arguments to the constructor of a JavaScript class as named class properties
 
-Supports:
+Supports `class` syntax for:
 
-* [x] [Native ES6 class]()
-* [x] [Babel]()
-* [x] [Node.js]()
+* [x] [Native ES6](#native-es6--nodejs-class)
+* [x] [Native Node.js](#native-es6--nodejs-class)
+* [x] [Babel](#babel-6-class)
 * [ ] Traceur
 
 Suggest another channel
