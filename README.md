@@ -4,8 +4,8 @@ Utility which attaches arguments as class properties
 
 Supports `class` syntax for:
 
-* [x] [ES6](#native-es6--nodejs-class)
-* [x] [Node.js](#native-es6--nodejs-class)
+* [x] [ES6](#native-es6)
+* [x] [Node.js](#nodejs-class)
 * [x] [Babel](#babel-6-class)
 * [ ] Traceur
 
@@ -72,13 +72,13 @@ let say = {
 let classInstance = new shiny('good', 'bye', say)
 ```
 
-#### & Node.js Class
+#### Node.js Class
 
 ```js
 const attachArgs = require('attach-args')
 
 class shiny {
-  constructor(someString, someOtherString, someService) {
+  constructor(someString, someOtherString) {
 
     attachArgs(arguments).to(this)
 
