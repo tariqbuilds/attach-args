@@ -12,7 +12,11 @@
       class nativeClass{
         constructor(alpha, beta) {
           attachArgs(arguments).toClass(this)
-          console.log('toClass', this)
+          this.verify()
+        }
+        verify() {
+          if (this.alpha.news === 'good')
+            console.log('toClass worked')
         }
       }
 

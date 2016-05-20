@@ -1,5 +1,6 @@
-# arguments-to-class-properties
-Utility to attach arguments to the constructor of a JavaScript class as named class properties
+# Attach Args
+
+Utility which attaches arguments as class properties
 
 Supports `class` syntax for:
 
@@ -8,19 +9,17 @@ Supports `class` syntax for:
 * [x] [Babel](#babel-6-class)
 * [ ] Traceur
 
-Suggest another channel
-
 # Installation
 
 Install as dependency
 
 ```sh
-npm i --save arguments-to-class-properties
+npm i --save attach-args
 ```
 
 Include script
 ```html
-<script src="node_modules/arguments-to-class-properties/dist/attachArgsToClass.js"></script>
+<script src="node_modules/attach-args/dist/attachArgs.min.js"></script>
 ```
 
 # Usage
@@ -30,7 +29,8 @@ Include script
 class shiny {
   constructor(someString, someOtherString, someService) {
 
-    // this is will attach arguments as named properties of current class instance
+    // this is will attach arguments to this constructor
+    // as named properties of the class instance
     attachArgs(arguments).toClass(this)
 
     this.someString === 'good'            // true
@@ -51,10 +51,16 @@ let classInstance = new shiny('good', 'bye', say)
 class shiny {
   constructor(a, b, c) {
 
-    // this is will attach arguments as named properties of current class instance
+    // this is will set this.a, this.b, & this.c
     attachArgs(arguments).toBabelClass(this)
 
-    // this.a === 'hello'
+    this.a === 'hello' // true
+
+    this.verifyItWorked() // true
+  }
+
+  verifyItWorked() {
+    return this.b === 'small'
   }
 }
 
