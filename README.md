@@ -25,8 +25,8 @@ class newWay {
 }
 
 /**
- * Both classes accomplish the same task:
- * Attach arguments to the constructor as class properties
+ * Both classes accomplish the same task of
+ * attaching constructor arguments as class properties
  */
 ```
 
