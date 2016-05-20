@@ -31,7 +31,7 @@ class shiny {
 
     // this is will attach arguments to this constructor
     // as named properties of the class instance
-    attachArgs(arguments).toClass(this)
+    attachArgs(arguments).to(this)
 
     this.someString === 'good'            // true
     this.someOtherString === 'bye'        // true

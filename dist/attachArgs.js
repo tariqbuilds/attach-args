@@ -62,10 +62,10 @@ var attachArgs =
 	  };
 
 	  return {
-	    toClass: function toClass(classRef) {
-	      this.toNativeClass(classRef);
+	    to: function to(classRef) {
+	      this.toClass(classRef);
 	    },
-	    toNativeClass: function toNativeClass(classRef) {
+	    toClass: function toClass(classRef) {
 	      var args = __webpack_require__(6)(classRef);
 	      attachPropertiesToClassInstance(classRef, args);
 	    },

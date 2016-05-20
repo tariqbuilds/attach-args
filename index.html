@@ -11,12 +11,12 @@
 
       class nativeClass{
         constructor(alpha, beta) {
-          attachArgs(arguments).toClass(this)
+          attachArgs(arguments).to(this)
           this.verify()
         }
         verify() {
           if (this.alpha.news === 'good')
-            console.log('toClass worked')
+            console.log('to() worked')
         }
       }
 
@@ -27,7 +27,7 @@
       var abc = function abc(alpha, beta) {
         _classCallCheck(this, abc);
         attachArgs(arguments).toBabelClass(this)
-        console.log('toBabelClass', this)
+        console.log('toBabelClass worked')
       };
 
       var a = new abc(params[0], params[1])
