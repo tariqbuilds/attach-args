@@ -189,10 +189,7 @@ var attachArgsToClass =
 	module.exports = function (classToParse) {
 	  try {
 
-	    class foo {
-	      constructor() {
-	      }
-	    }
+	    eval("class foo{}");
 
 	    // if so, parse native class
 	    var beginningOfConstructor = classToParse.constructor.toString().indexOf('constructor(')

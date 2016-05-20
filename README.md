@@ -37,7 +37,13 @@ class shiny {
 
 By default, it will automatically try to figure out what type of class you are using (native ES6, babel, etc.)
 
-To avoid this overhead, pass a 3rd parameter with one of the following options:
+To avoid this overhead, pass a 3rd parameter specifying the class type. Example:
+
+```js
+  attachArgsToClass(this, arguments, 'native-es6');
+```
+
+Supported options for class types:
 
 * 'native-es6'
 * 'babel-6'

@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   entry: "./lib/index.js",
   output: {
@@ -8,12 +10,11 @@ module.exports = {
     loaders: [
       {
         loader: 'babel',
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules|bower_components|native-es6)/,
         query: {
           presets: ['es2015']
         }
       }
     ]
   }
-
 }
