@@ -4,10 +4,31 @@ Utility which attaches arguments as class properties
 
 Supports `class` syntax for:
 
-* [x] [Native ES6](#native-es6--nodejs-class)
-* [x] [Native Node.js](#native-es6--nodejs-class)
+* [x] [ES6](#native-es6--nodejs-class)
+* [x] [Node.js](#native-es6--nodejs-class)
 * [x] [Babel](#babel-6-class)
 * [ ] Traceur
+
+```js
+class oldWay {
+  constructor(someService, someString, someBool) {
+    this.someService     = someService
+    this.someString      = someString
+    this.someBool        = someBool
+  }
+}
+
+class newWay {
+  constructor(someService, someString, someBool) {
+    attachArgs(arguments).to(this)
+  }
+}
+
+/**
+ * Both classes accomplish the same task:
+ * Attach arguments to the constructor as class properties
+ */
+```
 
 # Installation
 
@@ -77,7 +98,6 @@ let classInstance = new shiny('hello', 'small', 'world')
 
 # License
 The MIT License (MIT)
-Copyright (c) <year> <copyright holders>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
