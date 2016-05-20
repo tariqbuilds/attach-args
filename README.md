@@ -111,6 +111,15 @@ class shiny {
 let classInstance = new shiny('hello', 'small', 'world')
 ```
 
+# Warning
+
+Please note that *most of the time*, a class receiving a lot of arguments can be a red flag. Specifically, the [single responsibility principle](http://en.wikipedia.org/wiki/Single_responsibility_principle) might be of particular help.
+
+See ["The Principles of Good Programming"](http://www.artima.com/weblogs/viewpost.jsp?thread=331531) for general advice on avoiding poor coding practices.
+
+
+![Stay Classy, San Diego](https://media.giphy.com/media/fVZXOHjlx66Tm/giphy.gif)
+
 # Contribute
 
 1. Run `npm i`
