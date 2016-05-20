@@ -3,7 +3,7 @@ const webpack = require('webpack')
 module.exports = {
   entry: "./lib/index.js",
   output: {
-    library: 'attachArgsToClass',
+    library: 'attachArgs',
     path: './dist/'
   },
   module: {

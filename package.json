@@ -1,12 +1,12 @@
 {
-  "name": "arguments-to-class-properties",
+  "name": "attach-arguments",
   "version": "0.5.0",
   "description": "Utility to attach arguments to the constructor of a JavaScript class as named class properties",
   "main": "./lib/index.js",
   "scripts": {
-    "pack": "webpack --output-filename attachArgsToClass.js",
-    "pack-min": "webpack --optimize-minimize --output-filename attachArgsToClass.min.js",
-    "develop": "npm run pack -- --watch"
+    "pack": "webpack --output-filename attachArgs.js",
+    "pack-min": "webpack --optimize-minimize --output-filename attachArgs.min.js",
+    "develop": "npm run pack -- --watch & npm run pack-min -- --watch"
   },
   "repository": {
     "type": "git",

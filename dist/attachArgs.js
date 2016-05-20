@@ -1,4 +1,4 @@
-var attachArgsToClass =
+var attachArgs =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -51,7 +51,7 @@ var attachArgsToClass =
 	var getConstructorArgs = __webpack_require__(1);
 
 	// attaches provided arguments array to class as named properties
-	module.exports = function attachArgsToClass(classToParse, classArgs, classType) {
+	module.exports = function attachArgs(classToParse, classArgs, classType) {
 
 	  // parse the arguments to the constructor
 	  // of the provided class
