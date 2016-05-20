@@ -3,10 +3,12 @@ Utility to attach arguments to the constructor of a JavaScript class as named cl
 
 Supports:
 
-* [x] Native ES6 class
-* [x] Babel
-* [x] Node.js
+* [x] [Native ES6 class]()
+* [x] [Babel]()
+* [x] [Node.js]()
 * [ ] Traceur
+
+Suggest another channel
 
 # Installation
 
@@ -23,40 +25,49 @@ Include script
 
 # Usage
 
+#### Native ES6 & Node.js Class
 ```js
 class shiny {
-  constructor(a, b, c, d) {
+  constructor(someString, someOtherString, someService) {
 
-    // this is where the magic happens
-    attachArgsToClass(this, arguments);
+    // this is will attach arguments as named properties of current class instance
+    attachArgs(arguments).toClass(this)
 
-    // shiny.a - d will be available on this instance of shiny
+    this.someString === 'good'            // true
+    this.someOtherString === 'bye'        // true
+    this.someService.hello() === 'hello'  // true
   }
 }
+
+let say = {
+  hello: () => 'hello'
+}
+
+let classInstance = new shiny('good', 'bye', say)
 ```
 
-By default, it will automatically try to figure out what type of class you are using (native ES6, babel, etc.)
-
-To avoid this overhead, pass a 3rd parameter specifying the class type. Example:
-
+#### Babel 6 Class
 ```js
-  attachArgsToClass(this, arguments, 'native-es6');
+class shiny {
+  constructor(a, b, c) {
+
+    // this is will attach arguments as named properties of current class instance
+    attachArgs(arguments).toBabelClass(this)
+
+    // this.a === 'hello'
+  }
+}
+
+let classInstance = new shiny('hello', 'small', 'world')
 ```
-
-Supported options for class types:
-
-* 'native-es6'
-* 'babel-6'
-
-Alternatively, you can configure this across your application via: **TBD**
 
 # Contribute
 
 1. Clone the repo
 2. Run `npm i`
-3. Run `npm develop` (this runs a watch & auto-compile task)
+3. Run `npm develop` (this runs a watch & auto-build task)
 4. Make your edits
-5. Commit & Publish!
+5. Commit & Pull-Request!
 
 # License
 MIT
