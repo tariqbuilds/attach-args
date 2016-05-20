@@ -43,9 +43,14 @@ Include script
 <script src="node_modules/attach-args/dist/attachArgs.min.js"></script>
 ```
 
+Node.js
+```js
+const attachArgs = require('attach-args')
+```
+
 # Usage
 
-#### Native ES6 & Node.js Class
+#### Native ES6
 ```js
 class shiny {
   constructor(someString, someOtherString, someService) {
@@ -65,6 +70,24 @@ let say = {
 }
 
 let classInstance = new shiny('good', 'bye', say)
+```
+
+#### & Node.js Class
+
+```js
+const attachArgs = require('attach-args')
+
+class shiny {
+  constructor(someString, someOtherString, someService) {
+
+    attachArgs(arguments).to(this)
+
+    this.someString === 'node.js'            // true
+    this.someOtherString === 'ecmascript'    // true
+  }
+}
+
+let classInstance = new shiny('node.js', 'ecmascript')
 ```
 
 #### Babel 6 Class
@@ -90,11 +113,11 @@ let classInstance = new shiny('hello', 'small', 'world')
 
 # Contribute
 
-1. Clone the repo
-2. Run `npm i`
-3. Run `npm develop` (this runs a watch & auto-build task)
-4. Make your edits
-5. Commit & Pull-Request!
+1. Run `npm i`
+2. Run `npm develop` (this runs a watch & auto-build task)
+3. Make your edits
+4. Run tests (`node test-suite.js`)
+5. Send Pull Request
 
 # License
 The MIT License (MIT)

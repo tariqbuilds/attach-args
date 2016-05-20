@@ -1,7 +1,7 @@
 {
-  "name": "attach-arguments",
-  "version": "0.5.0",
-  "description": "Utility to attach arguments to the constructor of a JavaScript class as named class properties",
+  "name": "attach-args",
+  "version": "1.0.0",
+  "description": "Utility which attaches arguments to constructor as class properties",
   "main": "./lib/index.js",
   "scripts": {
     "pack": "webpack --output-filename attachArgs.js",
@@ -10,20 +10,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/afaqurk/arguments-to-class-properties.git"
+    "url": "git+https://github.com/afaqurk/attach-args.git"
   },
-  "author": "Afaq Tariq <afaq.tariq@inmar.com>",
+  "author": "Afaq Tariq <afaq05@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/afaqurk/arguments-to-class-properties/issues"
+    "url": "https://github.com/afaqurk/attach-args/issues"
   },
-  "homepage": "https://github.com/afaqurk/arguments-to-class-properties#readme",
+  "homepage": "https://github.com/afaqurk/attach-args#readme",
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
-    "minify": "^2.0.9",
     "webpack": "^1.13.0"
   },
-  "dependencies": {}
+  "dependencies": {},
 }
