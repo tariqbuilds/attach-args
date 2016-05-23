@@ -122,7 +122,7 @@ After transpiling, this method parses the arguments to the constructor of the tr
 
 # Contribute
 
-Be sure to check the [Contributor Goals](#contributor-goals) section to see the list of tasks that this project currently has open.
+Be sure to check the [Contributor Goals](#contributor-goals) section for currently open project tasks.
 
 1. Run `npm i`
 2. Run `npm develop` (this runs a watch & auto-build task)
