@@ -136,9 +136,6 @@ Be sure to check the [Contributor Goals](#contributor-goals) section for current
 * [ ] Add support for single config object rather than `arguments`
 * [ ] Support Traceur compiled `class`
 
-# License
-MIT
-
 # Warning
 
 This utility was created to help smooth the niche cases in which multiple arguments to a `class` cannot be avoided.
