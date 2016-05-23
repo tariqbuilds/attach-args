@@ -33,12 +33,12 @@ Install as dependency
 npm i --save attach-args
 ```
 
-Include script
+Include script in your `html`
 ```html
 <script src="node_modules/attach-args/dist/attachArgs.min.js"></script>
 ```
 
-Node.js
+Or simply `require` it in Node.js
 ```js
 const attachArgs = require('attach-args')
 ```
