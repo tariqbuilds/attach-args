@@ -43,13 +43,13 @@ Node.js
 const attachArgs = require('attach-args')
 ```
 
-# Supported Transpilers
+# Supported Class Types
 
 Supports `class` syntax for:
 
-* [x] [ES6](#native-es6)
-* [x] [Node.js](#nodejs-class)
-* [x] [Babel](#babel-6-class)
+* [x] [Native ES6](#native-es6)
+* [x] [Native Node.js](#nodejs-class)
+* [x] [Babel 6](#babel-6-class)
 * [ ] Traceur
 
 # Usage
