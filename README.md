@@ -5,6 +5,11 @@ A simple little utility which **attaches arguments to a constructor as class pro
 A prime example:
 
 ```js
+/**
+ * Both classes accomplish the same task of
+ * attaching constructor arguments as class properties
+ */
+ 
 class oldWay {
   constructor(someService, someString, someBool) {
     this.someService     = someService
@@ -18,11 +23,6 @@ class newWay {
     attachArgs(arguments).to(this)
   }
 }
-
-/**
- * Both classes accomplish the same task of
- * attaching constructor arguments as class properties
- */
 ```
 
 # Installation
@@ -45,7 +45,7 @@ const attachArgs = require('attach-args')
 
 # Supported Class Types
 
-Supports `class` syntax for:
+`attach-args` supports `class` syntax for:
 
 * [x] [Native ES6](#native-es6)
 * [x] [Native Node.js](#nodejs-class)
@@ -95,6 +95,9 @@ let classInstance = new shiny('node.js', 'ecmascript')
 ```
 
 #### Babel 6 Class
+
+If using Babel to transpile your ES6 code, use the `toBabelClass` method instead of `toClass`.
+
 ```js
 class shiny {
   constructor(a, b, c) {
@@ -115,14 +118,7 @@ class shiny {
 let classInstance = new shiny('hello', 'small', 'world')
 ```
 
-# Warning
-
-Please note that *most of the time*, a class receiving a lot of arguments can be a red flag. Specifically, the [single responsibility principle](http://en.wikipedia.org/wiki/Single_responsibility_principle) might be of particular help.
-
-See ["The Principles of Good Programming"](http://www.artima.com/weblogs/viewpost.jsp?thread=331531) for general advice on avoiding poor coding practices.
-
-
-![Stay Classy, San Diego](https://media.giphy.com/media/fVZXOHjlx66Tm/giphy.gif)
+After transpiling, this method parses the arguments to the constructor of the transpiled Babel 6 `class`.
 
 # Contribute
 
@@ -142,3 +138,15 @@ Be sure to check the [Contributor Goals](#contributor-goals) section to see the 
 
 # License
 MIT
+
+# Warning
+
+This utility was created to help smooth the niche cases in which multiple arguments to a `class` cannot be avoided.
+
+However, *most of the time*, a class receiving a lot of arguments can be a red flag. The [single responsibility principle](http://en.wikipedia.org/wiki/Single_responsibility_principle) might be of particular help.
+
+Please use your best engineering judgement when authoring JavaScript `class`es.
+
+See ["The Principles of Good Programming"](http://www.artima.com/weblogs/viewpost.jsp?thread=331531) for general advice on avoiding poor coding practices.
+
+![Stay Classy, San Diego](https://media.giphy.com/media/fVZXOHjlx66Tm/giphy.gif)
