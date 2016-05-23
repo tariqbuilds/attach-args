@@ -122,11 +122,18 @@ See ["The Principles of Good Programming"](http://www.artima.com/weblogs/viewpos
 
 # Contribute
 
+Be sure to check the [Contributor Goals](#contributor-goals) section to see the list of tasks that this project currently has open.
+
 1. Run `npm i`
 2. Run `npm develop` (this runs a watch & auto-build task)
 3. Make your edits
 4. Run tests (`node test-suite.js`)
 5. Send Pull Request
+
+# Contributor Goals
+
+* [ ] Add method to rename parameter before attaching (ex: attach `paramOne` as `param_one`)
+* [ ] Add support for single config object rather than `arguments`
 
 # License
 The MIT License (MIT)
