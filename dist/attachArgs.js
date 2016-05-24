@@ -48,15 +48,15 @@ var attachArgs =
 	
 	'use strict';
 
+	var parseClass = {
+	  babel: __webpack_require__(1),
+	  native: __webpack_require__(3)
+	};
+
 	module.exports = function (constructorArgs) {
 
-	  var attachPropertiesToClassInstance = function attachPropertiesToClassInstance(classRef, argsCSV) {
-	    var argsArray = argsCSV.split(',').map(function (arg) {
-	      return arg.replace(/\/\*.*\*\//, '').trim();
-	    }).filter(function (arg) {
-	      return arg;
-	    });
-	    argsArray.forEach(function (arg, i) {
+	  var attachPropertiesToClassInstance = function attachPropertiesToClassInstance(classRef, argsArray) {
+	    return argsArray.forEach(function (arg, i) {
 	      return classRef[arg] = constructorArgs[i];
 	    });
 	  };
@@ -66,59 +66,77 @@ var attachArgs =
 	      this.toClass(classRef);
 	    },
 	    toClass: function toClass(classRef) {
-	      var args = __webpack_require__(6)(classRef);
+	      var args = parseClass.native(classRef);
 	      attachPropertiesToClassInstance(classRef, args);
 	    },
 	    toBabelClass: function toBabelClass(classRef) {
-	      var args = __webpack_require__(5)(classRef);
+	      var args = parseClass.babel(classRef);
 	      attachPropertiesToClassInstance(classRef, args);
 	    }
 	  };
 	};
 
 /***/ },
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */
-/***/ function(module, exports) {
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var csvToArray = __webpack_require__(2);
 
 	module.exports = function (classToParse) {
 	  try {
 	    // thanks to: https://davidwalsh.name/javascript-arguments
-	    return classToParse.constructor.toString().match(/function\s.*?\(([^)]*)\)/)[1];
+	    var regex = /function\s.*?\(([^)]*)\)/;
+	    var constructorArgsAsCSV = classToParse.constructor.toString().match(regex)[1];
+
+	    if (!constructorArgsAsCSV || constructorArgsAsCSV.length < 1) throw 'The constructor of your class does not have any parameters defined';
+
+	    return csvToArray(constructorArgsAsCSV);
 	  } catch (err) {
-	    return false;
+	    console.error('attach-args: Could not parse provided Babel Class');
+	    console.error(err);
 	  }
 	};
 
 /***/ },
-/* 6 */
+/* 2 */
 /***/ function(module, exports) {
 
-	'use strict'
+	'use strict';
+
+	module.exports = function (argsCSV) {
+	  return argsCSV.split(',').map(function (arg) {
+	    return arg.replace(/\/\*.*\*\//, '').trim();
+	  }).filter(function (arg) {
+	    return arg;
+	  });
+	};
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var csvToArray = __webpack_require__(2);
 
 	module.exports = function (classToParse) {
 	  try {
 
-	    eval("class foo{}");
+	    var beginningOfConstructor = classToParse.constructor.toString().indexOf('constructor(');
+	    var endOfConstructor = classToParse.constructor.toString().indexOf(')', beginningOfConstructor);
+	    var lengthOfConstructor = endOfConstructor - beginningOfConstructor;
+	    var constructorArgsAsCSV = classToParse.constructor.toString().substr(beginningOfConstructor, lengthOfConstructor).replace('constructor(', '');
 
-	    // if so, parse native class
-	    var beginningOfConstructor = classToParse.constructor.toString().indexOf('constructor(')
-	    var endOfConstructor       = classToParse.constructor.toString().indexOf(')', beginningOfConstructor)
-	    var lengthOfConstructor    = endOfConstructor - beginningOfConstructor
-	    var argumentsOfConstructor = classToParse.constructor.toString().substr(beginningOfConstructor, lengthOfConstructor).replace('constructor(', '')
+	    if (!constructorArgsAsCSV || constructorArgsAsCSV.length < 1) throw "attach-args: No parameters defined for class constructor.";
 
-	    return argumentsOfConstructor
-
-	  } catch(error) {
-	    return false
+	    return csvToArray(constructorArgsAsCSV);
+	  } catch (error) {
+	    console.error('attach-args: Could not parse provided native Class');
+	    console.error(error);
 	  }
-	}
-
+	};
 
 /***/ }
 /******/ ]);

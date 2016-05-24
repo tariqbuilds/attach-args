@@ -10,7 +10,7 @@ module.exports = {
     loaders: [
       {
         loader: 'babel',
-        exclude: /(node_modules|bower_components|native-es6)/,
+        exclude: /(node_modules|bower_components)/,
         query: {
           presets: ['es2015']
         }
