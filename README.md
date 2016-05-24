@@ -9,7 +9,7 @@ A prime example:
  * Both classes accomplish the same task of
  * attaching constructor arguments as class properties
  */
- 
+
 class oldWay {
   constructor(someService, someString, someBool) {
     this.someService     = someService
@@ -132,7 +132,6 @@ Be sure to check the [Contributor Goals](#contributor-goals) section for current
 
 # Contributor Goals
 
-* [ ] Add method to rename parameter before attaching (ex: attach `paramOne` as `param_one`)
 * [ ] Add support for single config object rather than `arguments`
 * [ ] Support Traceur compiled `class`
 
